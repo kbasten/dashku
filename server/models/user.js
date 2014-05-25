@@ -6,7 +6,7 @@
 
 // Dependencies
 //
-var bcrypt     = require('bcrypt');
+var bcrypt     = require('bcrypt-nodejs');
 var uuid       = require('node-uuid');
 var mongoose   = require('mongoose');
 
@@ -14,7 +14,7 @@ var mongoose   = require('mongoose');
 
 var hashPassword = function (password, cb) {
 	bcrypt.genSalt(10, function (err, salt) {
-		bcrypt.hash(password, salt, function (err, hash) {
+		bcrypt.hash(password, salt, function(){}, function (err, hash) {
 			cb({hash: hash, salt:salt});
 		});
 	});
